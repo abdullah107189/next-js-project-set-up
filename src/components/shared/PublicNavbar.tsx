@@ -1,0 +1,58 @@
+import Link from "next/link";
+import { Button } from "../ui/button";
+
+const PublicNavbar = async () => {
+  const navItems = [
+    { href: "/", label: "Home" },
+    { href: "/", label: "Services" },
+    { href: "/", label: "Doctors" },
+    { href: "/", label: "About" },
+    { href: "/", label: "Contact" },
+  ];
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur  dark:bg-background/95">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+        <Link href="/" className="text-2xl font-bold text-primary">
+          My App
+        </Link>
+
+        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+          {navItems.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="text-foreground hover:text-primary transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Mobile Menu */}
+
+        <div className="md:hidden">
+          <nav className="flex flex-col space-y-4 mt-8">
+            {navItems.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-lg font-medium"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="border-t pt-4 flex flex-col space-y-4">
+              <div className="flex justify-center"></div>
+              <Link href="/login" className="text-lg font-medium">
+                <Button>Login</Button>
+              </Link>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default PublicNavbar;
