@@ -1,4 +1,4 @@
-import { IUser } from "@/app/types/user";
+import { IUser } from "@/types/user";
 import { baseApi } from "@/redux/baseApi";
 
 export const userApi = baseApi.injectEndpoints({
